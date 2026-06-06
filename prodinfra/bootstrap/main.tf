@@ -8,11 +8,11 @@ resource "azurerm_resource_group" "state_rg" {
 }
 
 resource "azurerm_storage_account" "state_sa" {
-  name                     = "tfstateproinfra01"
-  resource_group_name      = azurerm_resource_group.state_rg.name
-  location                 = azurerm_resource_group.state_rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  name                            = "tfstateproinfra01"
+  resource_group_name             = azurerm_resource_group.state_rg.name
+  location                        = azurerm_resource_group.state_rg.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
   allow_nested_items_to_be_public = false
 
   blob_properties {

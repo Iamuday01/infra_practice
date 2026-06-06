@@ -21,9 +21,9 @@ variable "kubernetes_version" {
 
 variable "default_node_pool" {
   type = object({
-    name       = string
-    node_count = number
-    vm_size    = string
+    name           = string
+    node_count     = number
+    vm_size        = string
     vnet_subnet_id = optional(string)
   })
 }

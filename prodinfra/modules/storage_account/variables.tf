@@ -14,8 +14,8 @@ variable "location" {
 }
 
 variable "account_tier" {
-  type        = string
-  default     = "Standard"
+  type    = string
+  default = "Standard"
   validation {
     condition     = contains(["Standard", "Premium"], var.account_tier)
     error_message = "Account tier must be either Standard or Premium."
@@ -23,8 +23,8 @@ variable "account_tier" {
 }
 
 variable "account_replication_type" {
-  type        = string
-  default     = "LRS"
+  type    = string
+  default = "LRS"
 }
 
 variable "network_rules" {

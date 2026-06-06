@@ -7,9 +7,9 @@ resource "azurerm_kubernetes_cluster" "this" {
   tags                = var.tags
 
   default_node_pool {
-    name       = var.default_node_pool.name
-    node_count = var.default_node_pool.node_count
-    vm_size    = var.default_node_pool.vm_size
+    name           = var.default_node_pool.name
+    node_count     = var.default_node_pool.node_count
+    vm_size        = var.default_node_pool.vm_size
     vnet_subnet_id = var.default_node_pool.vnet_subnet_id
   }
 

@@ -35,9 +35,9 @@ module "aks_cluster" {
   tags                = local.common_tags
 
   default_node_pool = {
-    name       = "default"
-    node_count = 2
-    vm_size    = "Standard_DS2_v2"
+    name           = "default"
+    node_count     = 2
+    vm_size        = "Standard_DS2_v2"
     vnet_subnet_id = module.aks_subnet.id
   }
 
@@ -83,9 +83,9 @@ module "key_vault" {
 
   access_policies = [
     {
-      object_id          = data.azurerm_client_config.current.object_id
-      secret_permissions = ["Get", "List", "Set", "Delete"]
-      key_permissions    = ["Get", "List", "Create", "Delete"]
+      object_id               = data.azurerm_client_config.current.object_id
+      secret_permissions      = ["Get", "List", "Set", "Delete"]
+      key_permissions         = ["Get", "List", "Create", "Delete"]
       certificate_permissions = ["Get", "List", "Create", "Delete"]
     }
   ]
