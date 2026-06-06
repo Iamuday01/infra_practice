@@ -34,7 +34,8 @@ module "aks_cluster" {
   dns_prefix          = "${local.resource_name_prefix}-aks"
   tags                = local.common_tags
 
-  # Force re-trigger with standard_d2s_v7
+  # VERSION_CHECK: 2026-06-06-V3
+  # Using standard_d2s_v7 which is confirmed available in your subscription
   default_node_pool = {
     name           = "default"
     node_count     = 1
