@@ -1,10 +1,13 @@
 resource "azurerm_storage_account" "this" {
-  name                     = var.name
-  resource_group_name      = var.resource_group_name
-  location                 = var.location
-  account_tier             = var.account_tier
-  account_replication_type = var.account_replication_type
-  tags                     = var.tags
+  name                          = var.name
+  resource_group_name           = var.resource_group_name
+  location                      = var.location
+  account_tier                  = var.account_tier
+  account_replication_type      = var.account_replication_type
+  https_traffic_only_enabled    = true
+  min_tls_version               = "TLS1_2"
+  public_network_access_enabled = var.network_rules != null ? true : false # Allow if rules are defined, else secure by default
+  tags                          = var.tags
 
   dynamic "network_rules" {
     for_each = var.network_rules != null ? [var.network_rules] : []
@@ -18,7 +21,7 @@ resource "azurerm_storage_account" "this" {
 
   lifecycle {
     ignore_changes = [
-      tags["CreatedBy"] # Example of ignoring a specific tag
+      tags["CreatedBy"]
     ]
   }
 }
