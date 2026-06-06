@@ -34,10 +34,11 @@ module "aks_cluster" {
   dns_prefix          = "${local.resource_name_prefix}-aks"
   tags                = local.common_tags
 
+  # Force re-trigger with standard_d2s_v7
   default_node_pool = {
     name           = "default"
     node_count     = 1
-    vm_size        = "Standard_D2s_v7"
+    vm_size        = "standard_d2s_v7"
     vnet_subnet_id = module.aks_subnet.id
   }
 
