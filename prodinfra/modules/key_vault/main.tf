@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "this" {
 
   network_acls {
     bypass         = "AzureServices"
-    default_action = "Allow" # In prod, this should be "Deny" with specific IP/Subnet rules
+    default_action = "Deny" # Harden for Checkov
   }
 
   dynamic "access_policy" {

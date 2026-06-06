@@ -5,13 +5,15 @@ resource "azurerm_kubernetes_cluster" "this" {
   dns_prefix                        = var.dns_prefix
   kubernetes_version                = var.kubernetes_version
   role_based_access_control_enabled = true
+  sku_tier                          = "Free" # Explicitly set
   tags                              = var.tags
 
   default_node_pool {
-    name           = var.default_node_pool.name
-    node_count     = var.default_node_pool.node_count
-    vm_size        = var.default_node_pool.vm_size
-    vnet_subnet_id = var.default_node_pool.vnet_subnet_id
+    name                        = var.default_node_pool.name
+    node_count                  = var.default_node_pool.node_count
+    vm_size                     = var.default_node_pool.vm_size
+    vnet_subnet_id              = var.default_node_pool.vnet_subnet_id
+    temporary_name_for_rotation = "tempnodepool" # Required for updates
   }
 
   identity {
@@ -24,6 +26,10 @@ resource "azurerm_kubernetes_cluster" "this" {
     load_balancer_sku = "standard"
     service_cidr      = var.service_cidr
     dns_service_ip    = var.dns_service_ip
+  }
+
+  key_vault_secrets_provider {
+    secret_rotation_enabled = true
   }
 
   lifecycle {
