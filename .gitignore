@@ -1,0 +1,17 @@
+# Terraform Ignore
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+
+# Azure Specific
+.azure/
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
