@@ -56,6 +56,19 @@ jobs:
       run: terraform plan -no-color -input=false
       continue-on-error: true
 
+    - name: Run tfsec
+      uses: aquasecurity/tfsec-action@v1.0.0
+      with:
+        working_directory: ./prodinfra/environments/${{ matrix.environment }}
+
+    - name: Run Checkov action
+      uses: bridgecrewio/checkov-action@master
+      with:
+        directory: ./prodinfra/
+        framework: terraform
+        quiet: true
+        soft_fail: false # Set to true if you don't want to block the pipeline on findings
+
     - name: Update Pull Request
       uses: actions/github-script@v7
       if: github.event_name == 'pull_request'
