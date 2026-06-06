@@ -16,7 +16,7 @@ variable "dns_prefix" {
 
 variable "kubernetes_version" {
   type    = string
-  default = "1.27"
+  default = "1.30.100"
 }
 
 variable "default_node_pool" {
