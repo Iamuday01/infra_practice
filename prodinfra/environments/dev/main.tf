@@ -36,10 +36,11 @@ module "aks_cluster" {
 
   default_node_pool = {
     name           = "default"
-    node_count     = 2
+    node_count     = 1
     vm_size        = "Standard_DS2_v2"
     vnet_subnet_id = module.aks_subnet.id
   }
+
 
   depends_on = [module.vnet] # Example of explicit depends_on, though implicit is better
 }
