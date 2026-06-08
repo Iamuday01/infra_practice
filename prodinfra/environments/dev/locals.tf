@@ -1,4 +1,5 @@
 locals {
+  # Trigger deployment pipeline
   env      = "dev"
   project  = "pro-infra"
   location = "East US"
